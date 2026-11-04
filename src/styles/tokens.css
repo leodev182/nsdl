@@ -1,0 +1,59 @@
+/* ─── Design Tokens — Parroquia Nuestra Señora de la Paz ─── */
+:root {
+  /* Colors */
+  --c-navy:      #1B2E4A;
+  --c-navy-dark: #0f1c2e;
+  --c-gold:      #C9A84C;
+  --c-gold-light:#e0c47a;
+  --c-cream:     #F8F5EF;
+  --c-cream-dark:#EDE8DE;
+  --c-white:     #FFFFFF;
+  --c-text:      #1B2E4A;
+  --c-text-muted:#5A6B7E;
+  --c-border:    #D8D2C6;
+
+  /* Typography */
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+
+  /* Font sizes — adultos mayores: escala más grande */
+  --text-xs:   0.875rem;  /* 14px */
+  --text-sm:   1rem;      /* 16px */
+  --text-base: 1.125rem;  /* 18px */
+  --text-lg:   1.25rem;   /* 20px */
+  --text-xl:   1.5rem;    /* 24px */
+  --text-2xl:  1.875rem;  /* 30px */
+  --text-3xl:  2.25rem;   /* 36px */
+  --text-4xl:  3rem;      /* 48px */
+  --text-hero: 3.5rem;    /* 56px */
+
+  /* Spacing */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* Layout */
+  --max-width: 1200px;
+  --gutter:    1.5rem;
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(27,46,74,0.08);
+  --shadow-md: 0 4px 12px rgba(27,46,74,0.1);
+  --shadow-lg: 0 8px 24px rgba(27,46,74,0.12);
+
+  /* Transitions */
+  --transition: 200ms ease;
+}

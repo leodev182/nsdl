@@ -1,0 +1,190 @@
+---
+const timesBar = [
+  { label: 'LUNES A SÁBADO',  value: '19:30 y 20:00 hrs' },
+  { label: 'DOMINGO',         value: '10:30 · 12:00 · 20:00 hrs' },
+  { label: 'DIRECCIÓN',       value: 'Av. Echeñique 4243, Ñuñoa' },
+  { label: 'CONTACTO',        value: '+56 2 2225 7817' },
+];
+---
+
+<section class="hero" id="inicio" aria-label="Bienvenidos">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="hero__overlay" aria-hidden="true"></div>
+
+  <div class="container hero__content">
+    <p class="hero__location">ÑUÑOA · REGIÓN METROPOLITANA · CHILE</p>
+    <h1 class="hero__title">Bienvenidos a<br>Nuestra Señora de la Paz</h1>
+    <p class="hero__subtitle">Bienvenidos a nuestra comunidad de fe.<br>Unidos en la oración y el servicio.</p>
+    <div class="hero__actions">
+      <a href="#horarios" class="hero__btn hero__btn--primary">Ver Calendario</a>
+      <a href="#parroquia" class="hero__btn hero__btn--secondary">Nuestra Parroquia</a>
+    </div>
+  </div>
+
+  <div class="hero__timesbar" role="complementary" aria-label="Datos de contacto rápido">
+    <div class="container hero__timesbar-inner">
+      {timesBar.map((cell, i) => (
+        <>
+          <div class="hero__cell">
+            <span class="hero__cell-label">{cell.label}</span>
+            <span class="hero__cell-value">{cell.value}</span>
+          </div>
+          {i < timesBar.length - 1 && <div class="hero__cell-sep" aria-hidden="true" />}
+        </>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    bottom: 72px; /* height of timesbar */
+    background: url('/images/hero.jpg') center/cover no-repeat;
+  }
+
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    bottom: 72px;
+    background: var(--c-navy);
+    opacity: 0.65;
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-block: var(--space-24);
+    color: var(--c-white);
+    min-height: 520px;
+    justify-content: center;
+  }
+
+  .hero__location {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    color: var(--c-gold);
+    margin-bottom: var(--space-4);
+  }
+
+  .hero__title {
+    font-family: var(--font-heading);
+    font-size: clamp(var(--text-3xl), 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--c-white);
+    margin-bottom: var(--space-6);
+    max-width: 700px;
+  }
+
+  .hero__subtitle {
+    font-size: var(--text-lg);
+    color: rgba(255,255,255,0.82);
+    line-height: 1.6;
+    margin-bottom: var(--space-8);
+  }
+
+  .hero__actions {
+    display: flex;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero__btn {
+    display: inline-block;
+    padding: var(--space-3) var(--space-8);
+    font-size: var(--text-base);
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    transition: opacity var(--transition);
+  }
+
+  .hero__btn:hover { opacity: 0.88; }
+
+  .hero__btn--primary {
+    background: var(--c-gold);
+    color: var(--c-navy);
+  }
+
+  .hero__btn--secondary {
+    background: transparent;
+    color: var(--c-white);
+    border: 2px solid rgba(255,255,255,0.7);
+  }
+
+  /* Times bar — navy dark */
+  .hero__timesbar {
+    position: relative;
+    z-index: 2;
+    background: var(--c-navy-dark);
+    flex-shrink: 0;
+  }
+
+  .hero__timesbar-inner {
+    display: flex;
+    align-items: stretch;
+    min-height: 72px;
+  }
+
+  .hero__cell {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-1);
+    padding: var(--space-4) var(--space-6);
+  }
+
+  .hero__cell-sep {
+    width: 1px;
+    background: rgba(255,255,255,0.12);
+    flex-shrink: 0;
+    margin-block: var(--space-3);
+  }
+
+  .hero__cell-label {
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--c-gold);
+  }
+
+  .hero__cell-value {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--c-white);
+  }
+
+  @media (max-width: 640px) {
+    .hero__bg,
+    .hero__overlay { bottom: 0; position: absolute; }
+
+    .hero__timesbar-inner {
+      flex-direction: column;
+      padding-block: var(--space-4);
+    }
+
+    .hero__cell-sep {
+      width: 100%;
+      height: 1px;
+      margin-block: 0;
+    }
+
+    .hero__cell { padding: var(--space-3) 0; }
+
+    .hero__content { min-height: 380px; padding-block: var(--space-16); }
+  }
+</style>

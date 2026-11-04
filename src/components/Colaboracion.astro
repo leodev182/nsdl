@@ -1,0 +1,104 @@
+---
+// Noticias y Colaboración — Súmate al 1% + Campaña de Donaciones
+const cards = [
+  {
+    title: 'Súmate al 1% Parroquial',
+    body: 'Tu contribución mensual del 1% permite sostener las obras de evangelización, el mantenimiento de nuestro templo y la ayuda social comunitaria.',
+    cta: 'Inscribir mi 1%',
+    href: '#',
+  },
+  {
+    title: 'Campaña de Donaciones',
+    body: 'Agradecemos tus aportes y colectas para el sostenimiento de nuestras actividades sociales y ayuda a las familias más necesitadas de la comuna.',
+    cta: 'Hacer una Donación',
+    href: '#',
+  },
+];
+---
+
+<section class="colab" id="servicios" aria-labelledby="colab-title">
+  <div class="container">
+    <h2 class="colab__title" id="colab-title">Noticias y Colaboración</h2>
+    <div class="colab__grid">
+      {cards.map(card => (
+        <article class="colab__card">
+          <div class="colab__card-accent" aria-hidden="true"></div>
+          <div class="colab__card-body">
+            <h3 class="colab__card-title">{card.title}</h3>
+            <p class="colab__card-text">{card.body}</p>
+            <a href={card.href} class="colab__card-btn">{card.cta}</a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .colab {
+    padding-block: var(--space-16);
+    background: var(--c-cream);
+  }
+
+  .colab__title {
+    font-family: var(--font-heading);
+    font-size: var(--text-3xl);
+    color: var(--c-navy);
+    text-align: center;
+    margin-bottom: var(--space-10);
+  }
+
+  .colab__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-6);
+  }
+
+  .colab__card {
+    display: flex;
+    background: var(--c-white);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+  }
+
+  .colab__card-accent {
+    width: 6px;
+    flex-shrink: 0;
+    background: var(--c-gold);
+  }
+
+  .colab__card-body {
+    padding: var(--space-6) var(--space-8);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .colab__card-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    color: var(--c-navy);
+  }
+
+  .colab__card-text {
+    font-size: var(--text-base);
+    color: var(--c-text-muted);
+    line-height: 1.7;
+    flex: 1;
+  }
+
+  .colab__card-btn {
+    display: inline-block;
+    align-self: flex-start;
+    padding: var(--space-3) var(--space-6);
+    background: var(--c-navy);
+    color: var(--c-white);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    transition: background var(--transition);
+  }
+
+  .colab__card-btn:hover { background: var(--c-navy-dark); }
+</style>

@@ -1,0 +1,74 @@
+---
+const schedule = [
+  { day: 'Lunes a Sábado', times: '19:30 y 20:00 hrs', icon: '📅' },
+  { day: 'Domingos',       times: '10:30, 12:00 y 20:00 hrs', icon: '☀️' },
+];
+---
+
+<section class="horarios" id="horarios" aria-labelledby="horarios-title">
+  <div class="container">
+    <h2 class="horarios__title" id="horarios-title">Horarios de Misa</h2>
+    <div class="horarios__grid">
+      {schedule.map(item => (
+        <article class="horarios__card">
+          <span class="horarios__icon" aria-hidden="true">{item.icon}</span>
+          <div>
+            <p class="horarios__day">{item.day}</p>
+            <p class="horarios__times">{item.times}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .horarios {
+    padding-block: var(--space-16);
+    background: var(--c-white);
+  }
+
+  .horarios__title {
+    font-family: var(--font-heading);
+    font-size: var(--text-3xl);
+    color: var(--c-navy);
+    text-align: center;
+    margin-bottom: var(--space-10);
+  }
+
+  .horarios__grid {
+    display: flex;
+    gap: var(--space-6);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .horarios__card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    background: var(--c-cream);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-6) var(--space-8);
+    min-width: 300px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .horarios__icon {
+    font-size: var(--text-2xl);
+    flex-shrink: 0;
+  }
+
+  .horarios__day {
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--c-navy);
+    margin-bottom: var(--space-1);
+  }
+
+  .horarios__times {
+    font-size: var(--text-base);
+    color: var(--c-text-muted);
+  }
+</style>

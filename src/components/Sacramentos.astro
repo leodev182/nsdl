@@ -1,0 +1,139 @@
+---
+const sacramentos = [
+  {
+    title: 'Bautismo',
+    desc: 'El primer sacramento, puerta de la fe y de la vida en Cristo.',
+  },
+  {
+    title: 'Confirmación',
+    desc: 'Fortalece la gracia bautismal y sella al cristiano con el Espíritu Santo.',
+  },
+  {
+    title: 'Eucaristía',
+    desc: 'El centro de la vida cristiana. Cuerpo y Sangre de Cristo.',
+  },
+  {
+    title: 'Matrimonio',
+    desc: 'La unión sagrada entre un hombre y una mujer ante Dios.',
+  },
+  {
+    title: 'Penitencia',
+    desc: 'El sacramento de la reconciliación y el perdón de los pecados.',
+  },
+  {
+    title: 'Unción de Enfermos',
+    desc: 'Fortaleza y consuelo para quienes enfrentan la enfermedad.',
+  },
+];
+---
+
+<section class="sacramentos" id="sacramentos" aria-labelledby="sacramentos-title">
+  <div class="container">
+    <div class="sacramentos__header">
+      <p class="sacramentos__eyebrow">SACRAMENTOS</p>
+      <h2 class="sacramentos__title" id="sacramentos-title">Los Signos Sagrados<br>de la Gracia</h2>
+      <p class="sacramentos__subtitle">Acompañamos cada etapa de tu vida con los sacramentos de la Iglesia.</p>
+    </div>
+
+    <div class="sacramentos__grid">
+      {sacramentos.map(s => (
+        <article class="sacramentos__card">
+          <div class="sacramentos__card-accent" aria-hidden="true"></div>
+          <h3 class="sacramentos__card-title">{s.title}</h3>
+          <p class="sacramentos__card-desc">{s.desc}</p>
+          <a href="#" class="sacramentos__card-link">Más información →</a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .sacramentos {
+    padding-block: var(--space-20);
+    background: var(--c-cream);
+  }
+
+  .sacramentos__header {
+    text-align: center;
+    margin-bottom: var(--space-12);
+  }
+
+  .sacramentos__eyebrow {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--c-gold);
+    margin-bottom: var(--space-3);
+  }
+
+  .sacramentos__title {
+    font-family: var(--font-heading);
+    font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl));
+    color: var(--c-navy);
+    line-height: 1.2;
+    margin-bottom: var(--space-4);
+  }
+
+  .sacramentos__subtitle {
+    font-size: var(--text-base);
+    color: var(--c-text-muted);
+    max-width: 520px;
+    margin-inline: auto;
+  }
+
+  .sacramentos__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+  }
+
+  .sacramentos__card {
+    background: var(--c-white);
+    border-radius: var(--radius-md);
+    padding: var(--space-8);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .sacramentos__card-accent {
+    width: 32px;
+    height: 3px;
+    background: var(--c-gold);
+    border-radius: 2px;
+    margin-bottom: var(--space-2);
+  }
+
+  .sacramentos__card-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    color: var(--c-navy);
+  }
+
+  .sacramentos__card-desc {
+    font-size: var(--text-sm);
+    color: var(--c-text-muted);
+    line-height: 1.65;
+    flex: 1;
+  }
+
+  .sacramentos__card-link {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--c-gold);
+    transition: opacity var(--transition);
+    align-self: flex-start;
+  }
+
+  .sacramentos__card-link:hover { opacity: 0.75; }
+
+  @media (max-width: 900px) {
+    .sacramentos__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 560px) {
+    .sacramentos__grid { grid-template-columns: 1fr; }
+  }
+</style>

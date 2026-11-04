@@ -1,0 +1,178 @@
+---
+const year = new Date().getFullYear();
+
+const cols = [
+  {
+    title: 'LA PARROQUIA',
+    links: ['Historia', 'Misión y Valores', 'Párroco', 'Equipo pastoral'],
+  },
+  {
+    title: 'SACRAMENTOS',
+    links: ['Bautismo', 'Confirmación', 'Matrimonio', 'Penitencia'],
+  },
+  {
+    title: 'COMUNIDAD',
+    links: ['Noticias', 'Eventos', 'Grupos parroquiales', 'Catequesis'],
+  },
+];
+---
+
+<footer class="footer" role="contentinfo">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <span class="footer__cross" aria-hidden="true">✝</span>
+      <div>
+        <p class="footer__label">PARROQUIA</p>
+        <p class="footer__name">Nuestra Señora de la Paz</p>
+        <p class="footer__address">Ñuñoa · Región<br>Metropolitana · Chile</p>
+      </div>
+    </div>
+
+    <nav class="footer__cols" aria-label="Pie de página">
+      {cols.map(col => (
+        <div class="footer__col">
+          <p class="footer__col-title">{col.title}</p>
+          <ul>
+            {col.links.map(link => (
+              <li><a href="#" class="footer__col-link">{link}</a></li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </nav>
+  </div>
+
+  <div class="footer__bottom">
+    <div class="container footer__bottom-inner">
+      <p class="footer__copy">&copy; {year} Parroquia Nuestra Señora de la Paz · Todos los derechos reservados</p>
+      <div class="footer__legal">
+        <a href="#">Política de Privacidad</a>
+        <span aria-hidden="true">·</span>
+        <a href="#">Términos de Uso</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--c-navy);
+    color: rgba(255,255,255,0.7);
+    padding-top: var(--space-16);
+  }
+
+  .footer__inner {
+    display: flex;
+    gap: var(--space-16);
+    padding-bottom: var(--space-12);
+    flex-wrap: wrap;
+  }
+
+  .footer__brand {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-4);
+    flex: 0 0 auto;
+  }
+
+  .footer__cross {
+    font-size: var(--text-3xl);
+    color: var(--c-gold);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .footer__label {
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--c-gold);
+    margin-bottom: var(--space-1);
+  }
+
+  .footer__name {
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--c-white);
+    margin-bottom: var(--space-2);
+  }
+
+  .footer__address {
+    font-size: var(--text-xs);
+    color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+  }
+
+  .footer__cols {
+    display: flex;
+    gap: var(--space-10);
+    flex: 1;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+
+  .footer__col { min-width: 120px; }
+
+  .footer__col-title {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--c-gold);
+    margin-bottom: var(--space-4);
+  }
+
+  .footer__col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .footer__col-link {
+    font-size: var(--text-sm);
+    color: rgba(255,255,255,0.65);
+    transition: color var(--transition);
+  }
+
+  .footer__col-link:hover { color: var(--c-gold); }
+
+  .footer__bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-block: var(--space-4);
+  }
+
+  .footer__bottom-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  .footer__copy {
+    font-size: var(--text-xs);
+    color: rgba(255,255,255,0.35);
+  }
+
+  .footer__legal {
+    display: flex;
+    gap: var(--space-3);
+    align-items: center;
+    font-size: var(--text-xs);
+  }
+
+  .footer__legal a {
+    color: rgba(255,255,255,0.35);
+    transition: color var(--transition);
+  }
+
+  .footer__legal a:hover { color: rgba(255,255,255,0.7); }
+
+  .footer__legal span { color: rgba(255,255,255,0.2); }
+
+  @media (max-width: 640px) {
+    .footer__cols { justify-content: flex-start; }
+    .footer__bottom-inner { flex-direction: column; align-items: flex-start; }
+  }
+</style>

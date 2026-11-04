@@ -1,0 +1,53 @@
+---
+// Google Maps embed — Av. Echeñique 4243, Ñuñoa
+const mapSrc = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.8373324623767!2d-70.5843478!3d-33.4404763!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cf8880d92ad5%3A0x6b4fb24e38e1a8a2!2sAv.%20Eche%C3%B1ique%204243%2C%20%C3%91u%C3%B1oa%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses!2scl!4v1700000000000!5m2!1ses!2scl";
+---
+
+<section class="ubicacion" id="ubicacion" aria-labelledby="ubicacion-title">
+  <div class="container">
+    <h2 class="ubicacion__title" id="ubicacion-title">Nuestra Ubicación</h2>
+    <div class="ubicacion__map">
+      <iframe
+        src={mapSrc}
+        title="Mapa — Parroquia Nuestra Señora de la Paz, Av. Echeñique 4243, Ñuñoa"
+        loading="lazy"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ubicacion {
+    padding-block: var(--space-16);
+    background: var(--c-white);
+  }
+
+  .ubicacion__title {
+    font-family: var(--font-heading);
+    font-size: var(--text-3xl);
+    color: var(--c-navy);
+    text-align: center;
+    margin-bottom: var(--space-10);
+  }
+
+  .ubicacion__map {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    aspect-ratio: 16 / 6;
+    border: 1px solid var(--c-border);
+  }
+
+  .ubicacion__map iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+
+  @media (max-width: 640px) {
+    .ubicacion__map { aspect-ratio: 4 / 3; }
+  }
+</style>

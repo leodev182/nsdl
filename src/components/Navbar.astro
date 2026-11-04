@@ -1,0 +1,214 @@
+---
+const navLinks = [
+  { label: 'Inicio',           href: '#inicio' },
+  { label: 'Nuestra Parroquia',href: '#parroquia' },
+  { label: 'Sacramentos',      href: '#sacramentos' },
+  { label: 'Misas',            href: '#misas' },
+  { label: 'Servicios',        href: '#servicios' },
+  { label: 'Formación',        href: '#formacion' },
+];
+---
+
+<header class="navbar" role="banner">
+  <div class="container navbar__inner">
+    <a href="#inicio" class="navbar__brand" aria-label="Parroquia Nuestra Señora de la Paz — Inicio">
+      <span class="navbar__cross" aria-hidden="true">✝</span>
+      <div class="navbar__brand-text">
+        <span class="navbar__label">PARROQUIA</span>
+        <span class="navbar__name">Ntra. Sra. de la Paz</span>
+      </div>
+    </a>
+
+    <nav aria-label="Menú principal">
+      <ul class="navbar__links">
+        {navLinks.map(link => (
+          <li>
+            <a href={link.href} class="navbar__link">{link.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <a href="#contacto" class="navbar__cta">Contacto</a>
+
+    <button class="navbar__hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="navbar__mobile" id="mobile-menu" hidden>
+    <nav aria-label="Menú móvil">
+      <ul>
+        {navLinks.map(link => (
+          <li><a href={link.href} class="navbar__mobile-link">{link.label}</a></li>
+        ))}
+        <li><a href="#contacto" class="navbar__mobile-cta">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.querySelector('.navbar__hamburger') as HTMLButtonElement;
+  const menu = document.getElementById('mobile-menu') as HTMLElement;
+
+  btn?.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+    menu.hidden = open;
+    btn.classList.toggle('is-open', !open);
+  });
+
+  menu?.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => {
+      btn.setAttribute('aria-expanded', 'false');
+      menu.hidden = true;
+      btn.classList.remove('is-open');
+    })
+  );
+</script>
+
+<style>
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--c-white);
+    border-bottom: 1px solid var(--c-border);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .navbar__inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+    height: 72px;
+  }
+
+  .navbar__brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    flex-shrink: 0;
+    text-decoration: none;
+  }
+
+  .navbar__cross {
+    font-size: 1.6rem;
+    color: var(--c-gold);
+    line-height: 1;
+  }
+
+  .navbar__brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .navbar__label {
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--c-gold);
+    line-height: 1;
+  }
+
+  .navbar__name {
+    font-family: var(--font-heading);
+    font-size: var(--text-base);
+    font-weight: 700;
+    color: var(--c-navy);
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  nav { margin-inline-start: auto; }
+
+  .navbar__links {
+    display: flex;
+    list-style: none;
+    gap: var(--space-6);
+  }
+
+  .navbar__link {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--c-text-muted);
+    transition: color var(--transition);
+    white-space: nowrap;
+  }
+
+  .navbar__link:hover { color: var(--c-navy); }
+
+  .navbar__cta {
+    flex-shrink: 0;
+    padding: var(--space-2) var(--space-6);
+    background: var(--c-navy);
+    color: var(--c-white);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    transition: background var(--transition);
+    white-space: nowrap;
+  }
+
+  .navbar__cta:hover { background: var(--c-navy-dark); }
+
+  .navbar__hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--space-2);
+    margin-inline-start: auto;
+  }
+
+  .navbar__hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--c-navy);
+    transition: transform var(--transition), opacity var(--transition);
+  }
+
+  .navbar__hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .navbar__hamburger.is-open span:nth-child(2) { opacity: 0; }
+  .navbar__hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .navbar__mobile {
+    background: var(--c-white);
+    border-top: 1px solid var(--c-border);
+    padding: var(--space-4) var(--gutter);
+  }
+
+  .navbar__mobile ul { list-style: none; display: flex; flex-direction: column; gap: var(--space-1); }
+
+  .navbar__mobile-link {
+    display: block;
+    padding: var(--space-3) 0;
+    font-size: var(--text-base);
+    font-weight: 500;
+    color: var(--c-text-muted);
+    border-bottom: 1px solid var(--c-cream-dark);
+  }
+
+  .navbar__mobile-cta {
+    display: block;
+    margin-top: var(--space-4);
+    padding: var(--space-3) var(--space-6);
+    background: var(--c-navy);
+    color: var(--c-white);
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    text-align: center;
+  }
+
+  @media (max-width: 1000px) {
+    .navbar__links,
+    .navbar__cta { display: none; }
+    .navbar__hamburger { display: flex; }
+    nav { margin-inline-start: 0; }
+  }
+</style>

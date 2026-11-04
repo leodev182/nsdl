@@ -1,0 +1,121 @@
+---
+const mapSrc = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.8373324623767!2d-70.5843478!3d-33.4404763!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cf8880d92ad5%3A0x6b4fb24e38e1a8a2!2sAv.%20Eche%C3%B1ique%204243%2C%20%C3%91u%C3%B1oa%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses!2scl!4v1700000000000!5m2!1ses!2scl";
+
+const info = [
+  { label: 'DIRECCIÓN',   value: 'Av. Echeñique 4243, Ñuñoa, R.M.', href: null },
+  { label: 'TELÉFONO',    value: '+56 2 2225 7817',                   href: 'tel:+56222257817' },
+  { label: 'EMAIL',       value: 'nuestra.sra.de.la.paz@gmail.com',   href: 'mailto:nuestra.sra.de.la.paz@gmail.com' },
+  { label: 'SECRETARÍA',  value: 'Pbro. Enrique Bernardo Faúndez V.', href: null },
+];
+---
+
+<section class="contacto" id="contacto" aria-labelledby="contacto-title">
+  <div class="container contacto__inner">
+    <div class="contacto__info">
+      <p class="contacto__eyebrow">CONTACTO</p>
+      <h2 class="contacto__title" id="contacto-title">Estamos aquí<br>para ti</h2>
+      <ul class="contacto__list">
+        {info.map(item => (
+          <li class="contacto__item">
+            <span class="contacto__item-label">{item.label}</span>
+            {item.href
+              ? <a href={item.href} class="contacto__item-value">{item.value}</a>
+              : <span class="contacto__item-value">{item.value}</span>
+            }
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="contacto__map">
+      <iframe
+        src={mapSrc}
+        title="Mapa — Parroquia Nuestra Señora de la Paz"
+        loading="lazy"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contacto {
+    padding-block: var(--space-20);
+    background: var(--c-navy);
+  }
+
+  .contacto__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+    align-items: center;
+  }
+
+  .contacto__eyebrow {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--c-gold);
+    margin-bottom: var(--space-3);
+  }
+
+  .contacto__title {
+    font-family: var(--font-heading);
+    font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl));
+    color: var(--c-white);
+    line-height: 1.2;
+    margin-bottom: var(--space-10);
+  }
+
+  .contacto__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .contacto__item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .contacto__item-label {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--c-gold);
+  }
+
+  .contacto__item-value {
+    font-size: var(--text-base);
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    transition: color var(--transition);
+  }
+
+  a.contacto__item-value:hover { color: var(--c-gold); }
+
+  .contacto__map {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.1);
+  }
+
+  .contacto__map iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .contacto__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .contacto__map { aspect-ratio: 16 / 9; }
+  }
+</style>
